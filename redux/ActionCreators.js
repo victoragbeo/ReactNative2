@@ -161,5 +161,32 @@ export const addFavorite = campsiteId => ({
 // with action type and act payload containing ID
 
     type: ActionTypes.ADD_FAVORITE,
+
     payload: campsiteId
+});
+
+export const deleteFavorite = campsiteId => ({
+    type: ActionTypes.DELETE_FAVORITE,
+    payload: campsiteId
+});
+
+export const postComment = (campsiteId, rating, author, text) => dispatch => {
+    
+    const newComment = {
+        campsiteId,
+        rating,
+        author,
+        text,
+        date: new Date().toLocaleDateString('en-US')
+    };
+
+    setTimeout(() => {
+        dispatch(addComment(newComment));
+    }, 2000);
+}
+// values needed to add a comment is in the parameter
+export const addComment = (comment) => ({
+    type: ActionTypes.ADD_COMMENT,
+    // payload: any data to send to the store
+    payload: comment
 });

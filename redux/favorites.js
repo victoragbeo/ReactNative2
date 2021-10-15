@@ -15,7 +15,8 @@ export const favorites = (state = [], action) => {
 // if Fav ID doesnt exist, we return new state with new Fav id added to the end of 
 // state by using concat.
             return state.concat(action.payload);
-
+        case ActionTypes.DELETE_FAVORITE:
+            return state.filter(favorite => favorite !== action.payload);
         default:
             return state;
     }

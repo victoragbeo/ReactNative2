@@ -1,5 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 
+// all reducers takes 2 param, the prev state
 export const comments = (state = { errMess: null, 
                                    comments: []}, action) => {
     switch (action.type) {
@@ -10,9 +11,10 @@ export const comments = (state = { errMess: null,
             return {...state, errMess: action.payload};
 
         case ActionTypes.ADD_COMMENT:
-            const comment = action.payload;
-            comment.id= state.comments.length;
-            return {...state, comments: state.comments.concat(comment)};
+            const newComment = action.payload;
+            newComment.id = state.comments.length;
+            return {...state, comments: state.comments.concat(newComment) };
+
         default:
             return state;
     }
